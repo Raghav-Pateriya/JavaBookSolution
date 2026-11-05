@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class PrimeFibo {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int lower, upper;
+
+        System.out.println("Enter Lower Range : ");
+        lower = sc.nextInt();
+
+        System.out.println("Enter Upper Range : ");
+        upper = sc.nextInt();
+        int count=0;
+        
+        for (int i = lower; i <= upper; i++)
+        {
+            int j = 2;
+            boolean isPrime = true;
+            if(i<2)
+            {
+                isPrime=false;
+            }
+            else {
+                
+                while (Math.sqrt(i)>=j) {
+                    if (i % j == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                    j++;
+                }
+            }
+
+            boolean isfib=false;
+            long value1 = 5L*i*i+4;
+            long value2 = 5L*i*i-4;
+
+            double sqValue1=Math.sqrt(value1);
+            double sqValue2=Math.sqrt(value2);
+
+            long chop1= (long)sqValue1;
+            long chop2= (long)sqValue2;
+
+            boolean isPerfectSquare1 = (chop1*chop1==value1);
+            boolean isPerfectSquare2 = (chop2*chop2==value2);
+
+            if(isPerfectSquare1 || isPerfectSquare2)
+            {
+                isfib=true;
+            }
+           
+            if(isPrime && isfib)
+            {   count=count+1;
+                System.out.println(i+" is both Prime number and fibonacci term.");
+            }
+
+           
+
+        }
+        System.out.println("Number of numbers which are both Prime and fibonacci terms in range "+lower+" and "+upper+": "+count);
+
+    }
+}
