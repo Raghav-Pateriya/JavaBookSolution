@@ -1,0 +1,55 @@
+import java.util.Scanner;;
+class Student
+{   static int counter =0;
+    int n;
+    Scanner s = new Scanner(System.in);
+    double marks[];
+    Student()
+    { counter++;
+        
+     System.out.println("Enter no. of subjects for Student "+counter+" : ");
+     n=s.nextInt();
+     marks=new double[n];
+     System.out.println("Enter marks of diff Subjects : ");
+     for(int i =0;i<n;i++)
+     {
+        marks[i]=s.nextDouble();
+     }
+    }
+    double totalMarks()
+    {   double totalMarks=0;
+        for(int i =0;i<n;i++)
+        {
+            totalMarks+=marks[i];
+        }
+        return totalMarks ;
+    }
+    double avg()
+    {
+        double avg;
+        avg = totalMarks()/n;
+        return avg;
+    }
+}
+public class StdMarks {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter no. of Students : ");
+        int s=sc.nextInt();
+        Student studentArr[] = new Student[s];
+        for(int i=0;i<s;i++)
+        {
+           studentArr[i]=new Student();
+        }
+        for(int i=0;i<s;i++)
+        {
+           System.out.println("Total Marks of student "+(i+1)+" in "+studentArr[i].n+" subjects is : "+studentArr[i].totalMarks());
+           System.out.println("Average of student "+(i+1)+" marks is : "+studentArr[i].avg());
+        }
+
+
+
+
+    }
+    
+}
